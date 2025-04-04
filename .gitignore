@@ -1,0 +1,22 @@
+# Ignore environment files
+.env
+.env.*
+
+# Ignore node_modules in all subdirectories
+/node_modules
+**/node_modules/
+
+# Ignore build and dist folders
+build/
+dist/
+
+# Ignore cache and lock files
+.eslintcache
+package-lock.json
+
+# Ignore log and report files
+v8.log
+performance-report.txt
+info*.log
+error*.log
+exception.*log
