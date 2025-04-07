@@ -9,7 +9,8 @@ export class CatalogService {
   }
 
   async createProduct(input: any): Promise<Product> {
-    return this._repository.create(input);
+    const data = await this._repository.create(input);
+    return data;
   }
 
   async updateProduct(input: any): Promise<Product> {
