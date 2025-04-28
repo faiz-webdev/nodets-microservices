@@ -10,7 +10,7 @@ export class CatalogService {
 
   async createProduct(input: any): Promise<Product> {
     const data = await this._repository.create(input);
-    if(!data.id) {
+    if (!data.id) {
       throw new Error("unable to create product");
     }
     return data;
@@ -22,8 +22,11 @@ export class CatalogService {
     return data;
   }
 
-  async getProducts(limit: number, offset: number): Promise<Product[]> {
-    return this._repository.find();
+  // instead of this we will get product from elastic search
+  async getProducts(limit: number, offset: number) {
+    const products = await this._repository.find(limit, offset);
+  
+    return products;
   }
 
   async getProduct(id: number): Promise<Product> {
