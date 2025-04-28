@@ -1,13 +1,12 @@
 # Run catalog service
 
 ## Command:
-```sh
-npm run dev
 
-## Faker library:
-```sh
-npm i @faker-js/faker --dev
+## Start the development server
+`npm run dev`
 
-## Rosie library:
-```sh
-npm i rosie @types/rosie -D
+## Install faker library
+`npm i @faker-js/faker --dev`
+
+## Install rosie library
+`npm i rosie @types/rosie -D`
