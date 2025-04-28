@@ -85,5 +85,22 @@ describe("catalogService", () => {
       const result = await service.updateProduct(requestBody);
       expect(result).toMatchObject(requestBody);
     });
+
+    test("should throw error with product does not exist", async () => {
+      const service = new CatalogService(repository);
+      const requestBody = mockProduct({
+        price: +faker.commerce.price(),
+      });
+
+      jest
+        .spyOn(repository, "update")
+        .mockImplementationOnce(() =>
+          Promise.reject(new Error("product does not exist"))
+        );
+
+      await expect(service.updateProduct({})).rejects.toThrow(
+        "product does not exist"
+      );
+    });
   });
 });
