@@ -113,7 +113,7 @@ describe("catalogService", () => {
   });
 
   describe("getProducts", () => {
-    test.only("should get products by offset and limit", async () => {
+    test("should get products by offset and limit", async () => {
       const service = new CatalogService(repository);
       const randomLimit = faker.number.int({ min: 1, max: 50 });
 
@@ -127,6 +127,23 @@ describe("catalogService", () => {
 
       expect(result.length).toEqual(randomLimit);
       expect(result).toMatchObject(products);
+    });
+    
+    test("should throw error with products does not exist", async () => {
+      const service = new CatalogService(repository);
+      const requestBody = mockProduct({
+        price: +faker.commerce.price(),
+      });
+
+      jest
+        .spyOn(repository, "find")
+        .mockImplementationOnce(() =>
+          Promise.reject(new Error("products does not exist"))
+        );
+
+      await expect(service.getProducts(0, 0)).rejects.toThrow(
+        "products does not exist"
+      );
     });
   });
 });

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.1% </span>
+                <span class="strong">89.74% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/39</span>
+                <span class='fraction'>35/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.1% </span>
+                <span class="strong">89.74% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/39</span>
+                <span class='fraction'>35/39</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -109,26 +109,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -151,19 +151,19 @@ export class CatalogService {
     this._repository = repository;
   }
 &nbsp;
-  async <span class="fstat-no" title="function not covered" >createProduct(input: any): Promise&lt;Product&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const data = await this._repository.create(input);</span>
-<span class="cstat-no" title="statement not covered" >    if (!data.id) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error("unable to create product");</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >    return data;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async createProduct(input: any): Promise&lt;Product&gt; {
+    const data = await this._repository.create(input);
+    if (!data.id) {
+      throw new Error("unable to create product");
+    }
+    return data;
+  }
 &nbsp;
-  async <span class="fstat-no" title="function not covered" >updateProduct(input: any): Promise&lt;Product&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const data = await this._repository.update(input);</span>
-<span class="cstat-no" title="statement not covered" >    // emit event to update record in Elastic search</span>
-<span class="cstat-no" title="statement not covered" >    return data;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  async updateProduct(input: any): Promise&lt;Product&gt; {
+    const data = await this._repository.update(input);
+    // emit event to update record in Elastic search
+    return data;
+  }
 &nbsp;
   // instead of this we will get product from elastic search
   async getProducts(limit: number, offset: number) {
@@ -187,7 +187,7 @@ export class CatalogService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-28T16:06:12.587Z
+                at 2025-04-28T16:09:36.838Z
             </div>
         <script src="../prettify.js"></script>
         <script>
