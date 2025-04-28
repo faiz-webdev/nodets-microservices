@@ -30,10 +30,10 @@ export class CatalogService {
   }
 
   async getProduct(id: number): Promise<Product> {
-    return this._repository.findOne(id);
+    return await this._repository.findOne(id);
   }
 
   async deleteProduct(id: number): Promise<{}> {
-    return this._repository.delete(id);
+    return await this._repository.delete(id);
   }
 }

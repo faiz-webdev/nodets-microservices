@@ -128,7 +128,7 @@ describe("catalogService", () => {
       expect(result.length).toEqual(randomLimit);
       expect(result).toMatchObject(products);
     });
-    
+
     test("should throw error with products does not exist", async () => {
       const service = new CatalogService(repository);
       const requestBody = mockProduct({
@@ -144,6 +144,40 @@ describe("catalogService", () => {
       await expect(service.getProducts(0, 0)).rejects.toThrow(
         "products does not exist"
       );
+    });
+  });
+
+  describe("getProduct", () => {
+    test("should get product by id", async () => {
+      const service = new CatalogService(repository);
+      const randomLimit = faker.number.int({ min: 1, max: 50 });
+
+      const product = productFactory.build();
+
+      jest
+        .spyOn(repository, "findOne")
+        .mockImplementationOnce(() => Promise.resolve(product));
+
+      const result = await service.getProduct(product.id!);
+      expect(result).toMatchObject(product);
+    });
+  });
+
+  describe("deleteProduct", () => {
+    test("should delete product by id", async () => {
+      const service = new CatalogService(repository);
+      const randomLimit = faker.number.int({ min: 1, max: 50 });
+
+      const product = productFactory.build();
+
+      jest
+        .spyOn(repository, "delete")
+        .mockImplementationOnce(() => Promise.resolve({ id: product.id }));
+
+      const result = await service.deleteProduct(product.id!);
+      expect(result).toMatchObject({
+        id: product.id,
+      });
     });
   });
 });
