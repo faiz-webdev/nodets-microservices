@@ -4,7 +4,7 @@ const router = express.Router();
 
 //endpoint
 router.post(
-  "/product",
+  "/products",
   async (_req: Request, res: Response, next: NextFunction) => {
     try {
       res.status(201).json({});
