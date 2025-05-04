@@ -10,7 +10,7 @@ const mockProduct = (rest: any) => {
   const requestBody = {
     name: faker.commerce.productName(),
     description: faker.commerce.productDescription(),
-    stock: faker.number.int({ min: 1, max: 100 }),
+    stock: faker.number.int({ min: 10, max: 100 }),
     ...rest,
   };
   return requestBody;
