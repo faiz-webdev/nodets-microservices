@@ -1,7 +1,8 @@
 import request from "supertest";
 import express from "express";
 import { faker } from "@faker-js/faker";
-import catalogRoutes from "../catalog.routes";
+import catalogRoutes, {catalogService} from "../catalog.routes";
+import { ProductFactory } from "../utils/fixtures";
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,12 @@ describe("Catalog Routes", () => {
   describe("POST /products", () => {
     test("should create product successfully", async () => {
       const requestBody = mockRequest();
+
+      const product = ProductFactory.build()
+
+      jest.spyOn(catalogService, 'createProduct')
+      .mockImplementationOnce(()=> Promise.resolve(product))
+
       const response = await request(app)
         .post("/products")
         .send(requestBody)
@@ -29,6 +36,8 @@ describe("Catalog Routes", () => {
       console.log("response", response);
 
       expect(response.status).toBe(201);
+
+      expect(response.body).toEqual(product);
     });
   });
 });
