@@ -1,4 +1,5 @@
 import { ICatalogRepository } from "../interface/catalogRepository.interface";
+import { Product } from "../models/product.model";
 
 export class CatalogService {
   private _repository: ICatalogRepository;
@@ -7,7 +8,7 @@ export class CatalogService {
     this._repository = repository;
   }
 
-  async createProduct(input: any) {
+  async createProduct(input: any): Promise<Product> {
     const data = await this._repository.create(input);
     if (!data.id) {
       throw new Error("unable to create product");
@@ -15,27 +16,24 @@ export class CatalogService {
     return data;
   }
 
-  async updateProduct(input: any) {
+  async updateProduct(input: any): Promise<Product> {
     const data = await this._repository.update(input);
     // emit event to update record in Elastic search
     return data;
   }
 
-  // instead of this we will get product from Elastic search
+  // instead of this we will get product from elastic search
   async getProducts(limit: number, offset: number) {
     const products = await this._repository.find(limit, offset);
-
+  
     return products;
   }
 
-  async getProduct(id: number) {
-    const product = await this._repository.findOne(id);
-    return product;
+  async getProduct(id: number): Promise<Product> {
+    return await this._repository.findOne(id);
   }
 
-  async deleteProduct(id: number) {
-    const response = await this._repository.delete(id);
-    // delete record from Elastic search
-    return response;
+  async deleteProduct(id: number): Promise<{}> {
+    return await this._repository.delete(id);
   }
 }

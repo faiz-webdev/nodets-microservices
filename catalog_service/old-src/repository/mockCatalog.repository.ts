@@ -12,7 +12,7 @@ export class MockCatalogRepository implements ICatalogRepository {
   update(data: Product): Promise<Product> {
     return Promise.resolve(data as unknown as Product);
   }
-  delete(id: any) {
+  delete(id: number) {
     return Promise.resolve(id);
   }
   find(limit: number, offset: number): Promise<Product[]> {

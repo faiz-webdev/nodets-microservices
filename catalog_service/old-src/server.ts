@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 8000;
 
 export const StartServer = async () => {
   expressApp.listen(PORT, () => {
-    console.log(`App is listening to ${PORT}`);
+    console.log(`App is running on port ${PORT}`);
   });
 
   process.on("uncaughtException", async (err) => {
@@ -14,5 +14,5 @@ export const StartServer = async () => {
 };
 
 StartServer().then(() => {
-  console.log("server is up");
+  console.log("Server started successfully");
 });

@@ -2,19 +2,20 @@ import request from "supertest";
 import express from "express";
 import { faker } from "@faker-js/faker";
 import catalogRoutes, { catalogService } from "../catalog.routes";
-import { ProductFactory } from "../../utils/fixtures";
+import { ProductFactory } from "../utils/fixtures";
 
 const app = express();
 app.use(express.json());
 app.use(catalogRoutes);
 
 const mockRequest = () => {
-  return {
+  const requestBody = {
     name: faker.commerce.productName(),
     description: faker.commerce.productDescription(),
-    stock: faker.number.int({ min: 10, max: 100 }),
-    price: +faker.commerce.price(),
+    stock: faker.number.int({ min: 1, max: 100 }),
+    price: faker.commerce.price(),
   };
+  return requestBody;
 };
 
 describe("Catalog Routes", () => {
@@ -37,7 +38,7 @@ describe("Catalog Routes", () => {
       const requestBody = mockRequest();
       const response = await request(app)
         .post("/products")
-        .send({ ...requestBody, name: "" })
+        .send({ ...requestBody })
         .set("Accept", "application/json");
       expect(response.status).toBe(400);
       expect(response.body).toEqual("name should not be empty");
