@@ -20,3 +20,7 @@ performance-report.txt
 info*.log
 error*.log
 exception.*log
+
+# Ignore coverage directories
+/catalog_service/coverage/
+/order-service/coverage/
