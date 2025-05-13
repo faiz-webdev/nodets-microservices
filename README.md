@@ -10,3 +10,9 @@
 
 ## Install rosie library
 `npm i rosie @types/rosie -D`
+
+## Run docker file
+`docker-compose up`
+
+## Run docker in background
+`docker-compose up -d`
