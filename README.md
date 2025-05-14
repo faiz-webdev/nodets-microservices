@@ -16,3 +16,12 @@
 
 ## Run docker in background
 `docker-compose up -d`
+
+## Install prisma
+`npm i prisma -D`
+
+## Install prisma initialise
+`npx prisma init --datasource-provider postgresql`
+
+## Create migration and table in db
+`npx prisma migrate dev --name ini`
