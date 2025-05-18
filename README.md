@@ -18,10 +18,16 @@
 `docker-compose up -d`
 
 ## Install prisma
-`npm i prisma -D`
+`npm install prisma --save-dev`
+
+# install prisma client
+`npm install @prisma/client`
 
 ## Install prisma initialise
 `npx prisma init --datasource-provider postgresql`
 
-## Create migration and table in db
-`npx prisma migrate dev --name ini`
+# Set up your database URL
+`DATABASE_URL="postgresql://user:password@localhost:5432/mydb"`
+
+## Generate Prisma client and migrate
+`npx prisma migrate dev --name init`

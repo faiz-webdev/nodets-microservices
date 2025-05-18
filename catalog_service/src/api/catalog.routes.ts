@@ -86,6 +86,7 @@ router.delete(
   async (req: Request, res: Response, next: NextFunction) => {
     async () => {
       const id = parseInt(req.params.id) || 0;
+      console.log(id);
       try {
         const data = await catalogService.deleteProduct(id);
         return res.status(200).json(data);
