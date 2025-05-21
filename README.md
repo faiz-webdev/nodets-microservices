@@ -20,14 +20,21 @@
 ## Install prisma
 `npm install prisma --save-dev`
 
-# install prisma client
+## install prisma client
 `npm install @prisma/client`
 
 ## Install prisma initialise
 `npx prisma init --datasource-provider postgresql`
 
-# Set up your database URL
+## Set up your database URL
 `DATABASE_URL="postgresql://user:password@localhost:5432/mydb"`
 
 ## Generate Prisma client and migrate
 `npx prisma migrate dev --name init`
+
+#Order service
+
+## install dependencies
+`npm i express express-rate-limiter dotenv`
+`npm i nodemon typescript ts-node jest ts-jest @types/express @types/node -D --save`
+`npm i cors && npm i @types/cors -D`
