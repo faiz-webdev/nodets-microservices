@@ -38,3 +38,9 @@
 `npm i express express-rate-limiter dotenv`
 `npm i nodemon typescript ts-node jest ts-jest @types/express @types/node -D --save`
 `npm i cors && npm i @types/cors -D`
+
+## install jest
+`npm i jest ts-jest @types/jest -D`
+
+## initialise jest
+`npx jest --init`
