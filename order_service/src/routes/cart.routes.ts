@@ -1,12 +1,14 @@
 import express, { NextFunction, Request, Response } from "express";
 import * as service from "../services/cart.service";
+import * as repository from "../repository/cart.repository";
 
 const router = express.Router();
+const repo = repository.CartRepository;
 
 router.post("/cart", (req: Request, res: Response, next: NextFunction) => {
   (async () => {
     try {
-      const response = await service.CreateCart(req.body);
+      const response = await service.CreateCart(req.body, repo);
       return res.status(200).json(response);
     } catch (error) {
       const err = error as Error;
@@ -18,7 +20,7 @@ router.post("/cart", (req: Request, res: Response, next: NextFunction) => {
 router.get("/cart", (req: Request, res: Response, next: NextFunction) => {
   (async () => {
     try {
-      const response = await service.GetCart(req.body);
+      const response = await service.GetCart(req.body, repo);
       return res.status(200).json(response);
     } catch (error) {
       const err = error as Error;
@@ -30,7 +32,7 @@ router.get("/cart", (req: Request, res: Response, next: NextFunction) => {
 router.patch("/cart", (req: Request, res: Response, next: NextFunction) => {
   (async () => {
     try {
-      const response = await service.EditCart(req.body);
+      const response = await service.EditCart(req.body, repo);
       return res.status(200).json(response);
     } catch (error) {
       const err = error as Error;
@@ -42,7 +44,7 @@ router.patch("/cart", (req: Request, res: Response, next: NextFunction) => {
 router.delete("/cart", (req: Request, res: Response, next: NextFunction) => {
   (async () => {
     try {
-      const response = await service.DeleteCart(req.body);
+      const response = await service.DeleteCart(req.body, repo);
       return res.status(200).json(response);
     } catch (error) {
       const err = error as Error;

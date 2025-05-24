@@ -1,1 +1,8 @@
-GET http://localhost:9000/order
+POST  http://localhost:9000/cart
+
+Content-Type: "application/json"
+
+{
+   "item": "Smart phone",
+   "price":1200
+}
